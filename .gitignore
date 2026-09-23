@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 本地 SQLite 数据
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+
+# 系统/编辑器
+.DS_Store
+.idea/
+.vscode/

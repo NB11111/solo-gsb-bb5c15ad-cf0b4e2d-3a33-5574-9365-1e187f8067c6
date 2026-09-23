@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>只读访谈脚本</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔗</text></svg>">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="share-body">
+
+<header class="topbar share-topbar">
+  <div class="brand">🔗 只读分享</div>
+  <div id="share-title" class="share-title">加载中…</div>
+  <span class="readonly-badge">READ ONLY</span>
+  <div class="topbar-actions">
+    <button id="btn-run" class="btn btn-primary">▶ 运行预览</button>
+    <button id="btn-export" class="btn">⤓ 导出 JSON</button>
+    <button id="btn-validate" class="btn">🔍 校验结果</button>
+  </div>
+</header>
+
+<main class="workspace">
+  <section class="canvas-wrap">
+    <div class="canvas-inner" id="canvas-inner">
+      <svg id="edge-layer" class="edge-layer">
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3"
+                  orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L9,3 L0,6 Z" fill="#8a94a6"></path>
+          </marker>
+          <marker id="arrow-cycle" markerWidth="10" markerHeight="10" refX="8" refY="3"
+                  orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L9,3 L0,6 Z" fill="#e5484d"></path>
+          </marker>
+        </defs>
+      </svg>
+      <div id="nodes-layer" class="nodes-layer"></div>
+    </div>
+  </section>
+
+  <aside class="panel">
+    <h2>脚本校验</h2>
+    <div id="validation-summary" class="validation-summary"></div>
+    <ul id="issue-list" class="issue-list"></ul>
+  </aside>
+</main>
+
+<div class="modal-backdrop" id="run-modal" hidden>
+  <div class="modal modal-run">
+    <div class="modal-head">
+      <h3>▶ 运行预览（只读）</h3>
+      <button class="modal-close" data-close="run-modal">×</button>
+    </div>
+    <div class="modal-body">
+      <div id="run-question" class="run-question"></div>
+      <div id="run-options" class="run-options"></div>
+      <div class="run-end" id="run-end" hidden>
+        <p>✅ 访谈结束</p>
+        <button class="btn" id="run-copy-path">复制本次路径 JSON</button>
+        <button class="btn" id="run-restart">重新开始</button>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <div class="run-breadcrumb" id="run-breadcrumb"></div>
+      <button class="btn" id="run-back" hidden>← 上一步</button>
+      <button class="btn" id="run-abort">结束访谈</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast-host" class="toast-host"></div>
+
+<script src="/static/js/api.js"></script>
+<script src="/static/js/validator.js"></script>
+<script src="/static/js/canvas.js"></script>
+<script src="/static/js/runner.js"></script>
+<script src="/static/js/share.js"></script>
+</body>
+</html>

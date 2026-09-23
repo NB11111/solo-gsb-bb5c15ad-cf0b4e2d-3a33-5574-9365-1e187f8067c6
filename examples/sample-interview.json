@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "kind": "branch-interview-script",
+  "title": "示例：产品体验回访",
+  "exportedAt": null,
+  "document": {
+    "root": "q_start",
+    "nodes": [
+      {
+        "id": "q_start",
+        "type": "question",
+        "title": "您最近一个月内使用过我们的产品吗？",
+        "x": 60,
+        "y": 160,
+        "options": [
+          { "id": "o_yes", "label": "用过", "terminal": false, "targetId": "q_freq" },
+          { "id": "o_no", "label": "没用过", "terminal": true, "targetId": null }
+        ]
+      },
+      {
+        "id": "q_freq",
+        "type": "question",
+        "title": "大概多久使用一次？",
+        "x": 380,
+        "y": 60,
+        "options": [
+          { "id": "o_weekly", "label": "每周都用", "terminal": false, "targetId": "q_score" },
+          { "id": "o_monthly", "label": "每月几次", "terminal": false, "targetId": "q_score" },
+          { "id": "o_once", "label": "只用过一两次", "terminal": false, "targetId": "q_why_once" }
+        ]
+      },
+      {
+        "id": "q_score",
+        "type": "question",
+        "title": "整体满意度打几分（1-5）？",
+        "x": 700,
+        "y": 60,
+        "options": [
+          { "id": "o_high", "label": "4-5 分", "terminal": false, "targetId": "q_recommend" },
+          { "id": "o_low", "label": "1-3 分", "terminal": false, "targetId": "q_pain" }
+        ]
+      },
+      {
+        "id": "q_why_once",
+        "type": "question",
+        "title": "是什么原因让您没有持续使用？",
+        "x": 700,
+        "y": 280,
+        "options": [
+          { "id": "o_need", "label": "没有相关需求", "terminal": true, "targetId": null },
+          { "id": "o_hard", "label": "太难用", "terminal": true, "targetId": null },
+          { "id": "o_other", "label": "其他", "terminal": true, "targetId": null }
+        ]
+      },
+      {
+        "id": "q_recommend",
+        "type": "question",
+        "title": "愿意推荐给同事或朋友吗？",
+        "x": 1020,
+        "y": 20,
+        "options": [
+          { "id": "o_r_yes", "label": "愿意", "terminal": true, "targetId": null },
+          { "id": "o_r_no", "label": "再看看", "terminal": true, "targetId": null }
+        ]
+      },
+      {
+        "id": "q_pain",
+        "type": "question",
+        "title": "最影响体验的问题是什么？",
+        "x": 1020,
+        "y": 180,
+        "options": [
+          { "id": "o_speed", "label": "速度慢", "terminal": true, "targetId": null },
+          { "id": "o_func", "label": "功能不全", "terminal": true, "targetId": null },
+          { "id": "o_bug", "label": "遇到了故障", "terminal": true, "targetId": null }
+        ]
+      }
+    ]
+  }
+}

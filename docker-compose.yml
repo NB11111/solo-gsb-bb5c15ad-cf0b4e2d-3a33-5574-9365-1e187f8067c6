@@ -1,0 +1,23 @@
+services:
+  editor:
+    build: .
+    image: branch-interview-editor:latest
+    container_name: branch-interview-editor
+    ports:
+      # 宿主机端口:容器端口 —— 浏览器访问 http://localhost:${HOST_PORT:-8000}
+      - "${HOST_PORT:-8000}:8000"
+    volumes:
+      # SQLite 数据文件持久化到宿主机 ./data
+      - ./data:/data
+    environment:
+      # 容器内数据库路径（对应挂载卷）
+      DATABASE_PATH: ${DATABASE_PATH:-/data/editor.db}
+      # 分享链接前缀；留空时自动使用当前访问的 Host
+      # 若经反向代理或域名访问，请设置为对外地址，例如 https://interview.example.com
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
